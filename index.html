@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OMAR FEREKH · Software Developer, ERP & Integrations</title>
+  <meta name="description" content="Omar Ferekh: software developer building ERP-integrated business applications with Python/FastAPI, React, PostgreSQL and Microsoft Dynamics 365. Beirut, Lebanon." />
+  <meta property="og:title" content="OMAR FEREKH · Software Developer, ERP & Integrations" />
+  <meta property="og:description" content="Backend & ERP integration developer: FastAPI, React, PostgreSQL, Dynamics 365 F&O and Business Central." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ferekhoa.github.io/" />
+  <link rel="canonical" href="https://ferekhoa.github.io/" />
+  <meta name="theme-color" content="#0b1120" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d4ed8'/><text x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'>OF</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1120; --bg2: #0f172a; --card: #111a2e; --line: #1f2a44;
+      --ink: #e5e9f2; --muted: #94a3b8; --brand: #3b82f6; --brand2: #22d3ee; --ok: #34d399;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* nav */
+    header.nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgba(11,17,32,.75); border-bottom: 1px solid var(--line); }
+    header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; text-decoration: none; letter-spacing: -.02em; }
+    .logo span { color: var(--brand); }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 24px; font-size: 14px; font-weight: 500; }
+    nav a:hover { color: var(--ink); }
+
+
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--brand); color: #fff; padding: 8px 12px; border-radius: 8px; z-index: 20; }
+    .skip:focus { left: 12px; }
+    a:focus-visible, .btn:focus-visible { outline: 2px solid var(--brand2); outline-offset: 3px; border-radius: 8px; }
+    .nav-cv { color: var(--ink) !important; border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; }
+    .nav-cv:hover { border-color: var(--brand); }
+    section[id] { scroll-margin-top: 72px; }
+
+    /* hero */
+    .hero { padding: 96px 0 72px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: -40% -10% auto auto; width: 620px; height: 620px; background: radial-gradient(circle, rgba(59,130,246,.25), transparent 65%); pointer-events: none; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ok); background: rgba(52,211,153,.08); border: 1px solid rgba(52,211,153,.25); padding: 6px 12px; border-radius: 999px; }
+    .eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); }
+    h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.05; letter-spacing: -.035em; margin: 22px 0 18px; font-weight: 800; }
+    h1 .grad { background: linear-gradient(90deg, var(--brand), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lede { font-size: 19px; color: var(--muted); max-width: 680px; margin: 0 0 32px; }
+    .lede b { color: var(--ink); font-weight: 600; }
+    .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--line); background: var(--card); transition: transform .15s, border-color .15s; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--brand); }
+    .btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+    .meta { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 48px; color: var(--muted); font-size: 14px; }
+    .meta strong { display: block; color: var(--ink); font-size: 26px; font-weight: 800; letter-spacing: -.02em; }
+
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 30px; letter-spacing: -.02em; margin: 0 0 8px; }
+    .sub { color: var(--muted); margin: 0 0 36px; max-width: 640px; }
+
+    /* about */
+    .about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+    .about p { color: #c7d0e0; margin-top: 0; }
+    .facts { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+    .facts div { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+    .facts div:last-child { border: 0; }
+    .facts span:first-child { color: var(--muted); }
+    .facts span:last-child { text-align: right; }
+
+    /* projects */
+    .featured { display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; margin-bottom: 24px; }
+    
+    .featured .body { padding: 30px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand2); margin-bottom: 10px; }
+    .featured h3 { font-size: 24px; margin: 0 0 10px; letter-spacing: -.01em; }
+    .featured p { color: #c7d0e0; margin: 0 0 16px; }
+    .featured ul { margin: 0 0 20px; padding-left: 18px; color: #c7d0e0; font-size: 14px; }
+    .featured li { margin-bottom: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; transition: border-color .15s, transform .15s; }
+    .card:hover { border-color: #2c3d63; transform: translateY(-3px); }
+    .card .icon { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 14px; background: rgba(59,130,246,.12); color: #93c5fd; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { color: var(--muted); margin: 0 0 16px; font-size: 14.5px; flex: 1; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .chip { font-size: 12px; padding: 3px 9px; border-radius: 999px; background: #17223a; border: 1px solid var(--line); color: #b6c2d9; }
+    .links { display: flex; gap: 16px; font-size: 14px; font-weight: 600; }
+    .links a { color: var(--brand); text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+
+
+    /* case study */
+    .case { background: linear-gradient(180deg, #13203b, var(--card)); border: 1px solid #22345a; border-radius: 18px; padding: 30px; margin-bottom: 24px; }
+    .case-head { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: start; margin-bottom: 18px; }
+    .case h3 { font-size: 26px; margin: 0 0 10px; letter-spacing: -.015em; }
+    .case p { color: #c7d0e0; margin: 0; max-width: 680px; }
+    .case-stats { display: grid; gap: 10px; min-width: 170px; }
+    .case-stats div { background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; color: var(--muted); font-size: 13px; }
+    .case-stats strong { display: block; color: var(--ink); font-size: 22px; font-weight: 800; }
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 18px; }
+    .case h4 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--brand2); }
+    .case ul { margin: 0; padding-left: 18px; color: #c7d0e0; font-size: 14.5px; }
+    .case li { margin-bottom: 6px; }
+    .case b, .featured b { color: var(--ink); }
+    .kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+
+
+    .fyp { background: linear-gradient(180deg, #102a26, var(--card)); border-color: #1d4a40; }
+    .fyp .tag, .fyp h4 { color: #34d399; }
+    .pipeline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 22px; }
+    .pipeline span { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 13.5px; font-weight: 600; }
+    .pipeline small { color: var(--muted); font-weight: 500; margin-left: 4px; }
+    .pipeline i { color: var(--muted); font-style: normal; }
+
+
+    .rc { background: linear-gradient(180deg, #221a3b, var(--card)); border-color: #3b2d63; }
+    .rc .tag, .rc h4 { color: #a78bfa; }
+    .case code { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 4px; }
+
+    /* experience */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+    .job { position: relative; margin-bottom: 36px; }
+    .job::before { content: ''; position: absolute; left: -28px; top: 7px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid var(--brand); }
+    .job.past::before { border-color: #475569; }
+    .job header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; }
+    .job h3 { margin: 0; font-size: 18px; }
+    .job .org { color: var(--brand2); font-weight: 600; }
+    .job .when { color: var(--muted); font-size: 14px; }
+    .job ul { color: #c7d0e0; padding-left: 18px; margin: 10px 0 0; font-size: 15px; }
+    .job li { margin-bottom: 5px; }
+
+    /* skills */
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .skill h4 { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+
+    /* contact */
+    .contact { text-align: center; }
+    .contact .ctas { justify-content: center; }
+    footer { padding: 28px 0 40px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+    @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 860px) {
+      header.nav .wrap { height: auto; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; gap: 6px; }
+      nav { display: flex; overflow-x: auto; gap: 16px; width: 100%; }
+      nav a { margin-left: 0; white-space: nowrap; }
+      .about, .featured, .grid, .skills, .case-head, .case-grid { grid-template-columns: 1fr; }
+      .case { padding: 22px; }
+      .case-stats { grid-template-columns: repeat(3, 1fr); }
+      .featured img { border-right: 0; border-bottom: 1px solid var(--line); max-height: 260px; }
+      .hero { padding-top: 64px; }
+      .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .meta strong { font-size: 21px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#projects">Skip to projects</a>
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="#">OMAR<span>.</span>FEREKH</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cv" href="Omar_Ferekh_CV.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="border-top:0">
+      <div class="wrap">
+        <span class="eyebrow">Open to remote &amp; regional roles</span>
+        <h1>I build business software<br />that <span class="grad">talks to your ERP.</span></h1>
+        <p class="lede">
+          I'm <b>OMAR FEREKH</b>, a software developer in Beirut. I build the ERP platform and mobile apps a steel manufacturer
+          runs on every day, with <b>Python/FastAPI, React, PostgreSQL and Flutter</b>, integrated with <b>Microsoft Dynamics 365 F&amp;O and Business Central</b>.
+          Before software I was a mechatronics engineer, so I understand how a plant actually runs.
+        </p>
+        <div class="ctas">
+          <a class="btn primary" href="#projects">View projects →</a>
+          <a class="btn" href="https://github.com/ferekhoa" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/omar-ferekh-874138158/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="Omar_Ferekh_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        </div>
+        <div class="meta">
+          <div><strong>2.5+ yrs</strong>building production software</div>
+          <div><strong>Daily use</strong>ERP platform run across departments</div>
+          <div><strong>2 ERPs</strong>D365 F&amp;O · Business Central</div>
+          <div><strong>2 degrees</strong>Computer Science · Mechatronics</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div>
+          <h2>About</h2>
+          <p class="sub">Engineer first, developer by choice.</p>
+          <p>
+            At <b>Zeenni Steel Industries</b> I develop <b>ERP-ZS</b>, the web platform behind warehouse, sales,
+            purchasing, production and maintenance, along with Flutter apps that sync with Dynamics 365 on the shop floor.
+            That covers FastAPI services, PostgreSQL schemas and migrations, React front ends, D365 integrations, testing, and the
+            release tooling that takes changes safely from UAT to production.
+          </p>
+          <p>
+            Most of my work is where systems meet: authentication, validation, data transformation, error handling,
+            and reconciling inventory and production data when the numbers don't match. I like problems where the
+            software has to fit how people actually work.
+          </p>
+          <p>
+            Before that I spent about two years installing, commissioning and troubleshooting industrial machinery
+            in Lebanon and Qatar, which taught me to think about the whole system.
+          </p>
+        </div>
+        <div class="facts">
+          <div><span>Based in</span><span>Beirut, Lebanon (UTC+2)</span></div>
+          <div><span>Focus</span><span>Backend · ERP integration · Business apps</span></div>
+          <div><span>Current role</span><span>Software Developer, Zeenni Steel</span></div>
+          <div><span>Education</span><span>B.Sc. CS · B.Eng. Mechatronics (RHU)</span></div>
+          <div><span>Certification</span><span>CCNA: Introduction to Networks</span></div>
+          <div><span>Languages</span><span>Arabic (native) · English (proficient)</span></div>
+          <div><span>Availability</span><span>Immediately</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <h2>Projects</h2>
+        <p class="sub">Production systems I build at work and my machine-learning final-year project. Employer code is private, so those are described as case studies. I'm happy to walk through them in an interview.</p>
+
+        <article class="case">
+          <div class="case-head">
+            <div>
+              <span class="tag">Case study · Production system · Zeenni Steel</span>
+              <h3>ERP-ZS: the operations platform for a steel manufacturer</h3>
+              <p>A web and mobile platform that runs daily operations around <b>Microsoft Dynamics 365 Finance &amp; Operations</b>: warehouse, sales, purchasing, production, maintenance, fleet and reporting. It's used across departments every day.</p>
+            </div>
+            <div class="case-stats">
+              <div><strong>D365 F&amp;O</strong>integrated</div>
+              <div><strong>Web + Mobile</strong>React · Flutter</div>
+              <div><strong>UAT → Prod</strong>release pipeline</div>
+            </div>
+          </div>
+          <div class="case-grid">
+            <div>
+              <h4>Modules</h4>
+              <ul>
+                <li><b>Supply chain:</b> on-hand stock, transfers, picking, arrivals, purchasing, outbound sales, and stock counts with offline sync</li>
+                <li><b>Production:</b> production runs, formulas, scrap and yield, plus machine activity, maintenance and production KPIs</li>
+                <li><b>Fleet:</b> trips, routing (GraphHopper, Google), telematics</li>
+                <li>Chat, live notifications, dynamic reports and Excel/PDF export</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Engineering</h4>
+              <ul>
+                <li><b>D365 integration:</b> contract-based proxy APIs, table sync, and a scheduler with a circuit breaker</li>
+                <li><b>Security:</b> a privilege catalog with role-based access, WebSocket tickets, secure browser sessions, CSP and rate limiting, plus security runbooks</li>
+                <li><b>Quality:</b> pytest (including live PostgreSQL tests), Vitest, Playwright end-to-end tests, and Alembic migrations</li>
+                <li><b>Delivery:</b> Windows Server/IIS services, and a <b>release control panel</b> for UAT and production releases, backups, rollback and an audit trail</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">SQLAlchemy · Alembic</span><span class="chip">React 19</span><span class="chip">WebSockets</span><span class="chip">D365 F&amp;O</span><span class="chip">Playwright</span><span class="chip">PowerShell</span><span class="chip">IIS</span></div>
+        </article>
+
+        <article class="case fyp">
+          <div class="case-head">
+            <div>
+              <span class="tag">Final-year project · Machine learning + React · Rafik Hariri University</span>
+              <h3>Future Agri: AI plant-disease detection and a Web3 agriculture marketplace</h3>
+              <p>A full-stack platform for farmers. You upload a photo of a leaf, a <b>deep-learning model</b> diagnoses the disease in seconds, and you can shop for supplies in a <b>React marketplace</b> that rewards every purchase with <b>blockchain loyalty tokens</b>.</p>
+            </div>
+            <div class="case-stats">
+              <div><strong>4</strong>classes the model predicts</div>
+              <div><strong>256×256</strong>input image size</div>
+              <div><strong>3</strong>services (ML · Web · Web3)</div>
+            </div>
+          </div>
+          <div class="pipeline" aria-label="System pipeline">
+            <span>Leaf photo</span><i>→</i><span>React app</span><i>→</i><span>FastAPI <small>/predict</small></span><i>→</i><span>TensorFlow Serving <small>CNN</small></span><i>→</i><span>Diagnosis + confidence</span>
+          </div>
+          <div class="case-grid">
+            <div>
+              <h4>Machine learning</h4>
+              <ul>
+                <li>Trained a <b>convolutional neural network</b> in TensorFlow/Keras on <b>PlantVillage</b> potato-leaf images. It recognises early blight, late blight, healthy leaves, and images that aren't leaves at all.</li>
+                <li>Built a tf.data pipeline (cache, shuffle, prefetch) with an 80/10/10 train/validation/test split, resize and rescale layers, and random flip and rotation augmentation.</li>
+                <li>Exported versioned SavedModels and served them with <b>TensorFlow Serving</b>, behind a <b>FastAPI</b> service that validates images, preprocesses them and returns the class and confidence. Photos that aren't leaves are rejected.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Web &amp; Web3</h4>
+              <ul>
+                <li>A <b>React</b> front end with a disease-detection page, product catalog and details, checkout, reviews, user accounts and an admin area. It uses Firebase.</li>
+                <li><b>Web3 loyalty programme:</b> a Motoko smart contract on the <b>Internet Computer</b> awards tokens for each purchase and keeps balances in stable storage.</li>
+                <li>A Node/Express service provides live weather data (OpenWeatherMap) for the platform.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chips"><span class="chip">TensorFlow / Keras</span><span class="chip">CNN</span><span class="chip">TensorFlow Serving</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Firebase</span><span class="chip">Motoko · Internet Computer</span><span class="chip">Node / Express</span></div>
+        </article>
+
+        <article class="case rc">
+          <div class="case-head">
+            <div>
+              <span class="tag">Case study · DevOps &amp; release engineering · Zeenni Steel</span>
+              <h3>ERP-ZS Release Control: safe releases, backups and rollback in one place</h3>
+              <p>A web control panel I built to take ERP-ZS from development to <b>UAT</b> and then <b>production</b> safely. It shows all three environments side by side, runs releases as tracked jobs, keeps backups labelled by version, rolls back in one guided step, and records who did what.</p>
+            </div>
+            <div class="case-stats">
+              <div><strong>3</strong>environments: Dev · UAT · Prod</div>
+              <div><strong>SHA-256</strong>checked at every copy</div>
+              <div><strong>1-step</strong>guided rollback</div>
+            </div>
+          </div>
+          <div class="pipeline" aria-label="Release flow">
+            <span>Development <small>main</small></span><i>→</i><span>Build package <small>vX.Y.Z</small></span><i>→</i><span>UAT <small>backup · migrate · health check</small></span><i>→</i><span>Git tag + release notes</span><i>→</i><span>Production <small>prepare, check, release</small></span><i>↺</i><span>Rollback</span>
+          </div>
+          <div class="case-grid">
+            <div>
+              <h4>What it does</h4>
+              <ul>
+                <li><b>Release to UAT:</b> refuses to run unless the code is on a clean, pushed <code>main</code>. It builds a versioned package, backs up code and database, applies migrations, restarts, and waits for a health check before tagging the version in git.</li>
+                <li><b>Promote to production:</b> only packages that passed UAT can be released, and each file is verified by SHA-256 at every copy. A no-downtime "prepare and check" step runs first, then a typed confirmation. If a step fails, the old version is restored automatically.</li>
+                <li><b>Rollback:</b> code-only, or code and database. It only offers database dumps proven to match the target version's schema, and takes a safety dump before any restore.</li>
+                <li><b>Versioning:</b> semantic versions, with release notes drafted automatically from conventional commits and a suggested version bump.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Engineering</h4>
+              <ul>
+                <li>A <b>FastAPI</b> backend runs the existing, tested <b>PowerShell</b> release tooling on Windows servers as tracked jobs, with live logs, one job at a time, and an audit trail.</li>
+                <li>A <b>React</b> front end with pages for the environment overview, releases, backups, live server logs, jobs and the audit trail.</li>
+                <li><b>Security:</b> the admin password is stored only as a hash, server logins stay in encrypted per-user files (never in the repo or <code>.env</code>), and the panel checks each server's identity before changing anything. When hosted, it runs behind IIS with HTTPS and Windows Authentication.</li>
+                <li>Tests with pytest, Vitest and PowerShell scripts; it runs as a Windows service and can update itself.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chips"><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">PowerShell</span><span class="chip">Git</span><span class="chip">IIS</span><span class="chip">Windows services</span><span class="chip">pytest</span><span class="chip">Vitest</span></div>
+        </article>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M9 12l2 2 4-4"/><path d="M11 18.5h2"/></svg></div>
+            <span class="kicker">Mobile · Zeenni Steel</span>
+            <h3>D365 Workflow Approvals</h3>
+            <p>A Flutter app that lets managers review and approve Dynamics 365 F&amp;O workflow items from their phones. It has separate sandbox and live environments and CI builds.</p>
+            <div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">D365 F&amp;O</span><span class="chip">GitHub Actions</span></div>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
+            <span class="kicker">Mobile · Business Central</span>
+            <h3>Business Central Warehouse App</h3>
+            <p>A Flutter warehouse app on top of Business Central with barcode scanning, stock counts and blind counts, transfer and purchase orders, production, and label printing. Count sessions are saved locally (SQLite), so work survives crashes and can be resumed.</p>
+            <div class="chips"><span class="chip">Flutter</span><span class="chip">Business Central API</span><span class="chip">SQLite</span><span class="chip">Barcode</span></div>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></div>
+            <span class="kicker">Computer vision</span>
+            <h3>Object Detector</h3>
+            <p>A custom-trained YOLOv8 model served as a web app and JSON API, with adjustable confidence and IoU thresholds. Packaged as a CUDA Docker image with gunicorn.</p>
+            <div class="chips"><span class="chip">Flask</span><span class="chip">Ultralytics YOLOv8</span><span class="chip">Docker / CUDA</span></div>
+            <div class="links"><a href="https://github.com/ferekhoa/Object-Detector" target="_blank" rel="noopener">Source →</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <h2>Experience</h2>
+        <p class="sub">From machines to software, always on the operations side.</p>
+        <div class="timeline">
+          <div class="job">
+            <header><div><h3>Software Developer</h3><span class="org">Zeenni Steel Industries &amp; Trading</span></div><span class="when">May 2024 to present · Chouaifet, Lebanon</span></header>
+            <ul>
+              <li>Develop and maintain ERP-ZS, a FastAPI + React + PostgreSQL platform covering inventory, sales, purchasing, production, maintenance and fleet</li>
+              <li>Build Flutter/Dart mobile apps that synchronize with Microsoft Dynamics ERP systems (workflow approvals, warehouse operations)</li>
+              <li>Integrate and support Dynamics 365 Finance &amp; Operations and Business Central across departments</li>
+              <li>Design and consume APIs with validation, authentication/authorization and data transformation; WebSocket notifications and role-based access</li>
+              <li>Own releases: Windows Server/IIS deployments, Alembic migrations, a release control panel (UAT to production, backups, rollback), logging and performance troubleshooting</li>
+            </ul>
+          </div>
+          <div class="job past">
+            <header><div><h3>Mechatronics &amp; Service Engineer</h3><span class="org">Agrico for Agricultural Development</span></div><span class="when">Mar 2021 to Jul 2022 · Al Khor, Qatar</span></header>
+            <ul>
+              <li>Installed, commissioned, maintained and troubleshot industrial machinery across mechanical and electrical systems</li>
+              <li>Managed machine-related projects and worked directly with suppliers and customers on technical issues</li>
+            </ul>
+          </div>
+          <div class="job past">
+            <header><div><h3>Mechatronics Engineer</h3><span class="org">Zeenni Steel Industries &amp; Trading</span></div><span class="when">Jul 2020 to Mar 2021 · Lebanon</span></header>
+            <ul>
+              <li>Programmed and improved industrial machinery; contributed to the design and upgrade of boilers, mixers and homogenizers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <p class="sub">The tools I use day to day.</p>
+        <div class="skills">
+          <div class="skill"><h4>Backend &amp; APIs</h4><div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">REST</span><span class="chip">WebSockets</span><span class="chip">JWT / RBAC</span><span class="chip">C#</span><span class="chip">C++</span></div></div>
+          <div class="skill"><h4>ERP &amp; Integration</h4><div class="chips"><span class="chip">Dynamics 365 F&amp;O</span><span class="chip">Business Central</span><span class="chip">OData</span><span class="chip">OAuth2</span><span class="chip">Data mapping</span><span class="chip">n8n</span></div></div>
+          <div class="skill"><h4>Data</h4><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQL</span><span class="chip">SQLAlchemy</span><span class="chip">Alembic</span><span class="chip">SQLite</span></div></div>
+          <div class="skill"><h4>Frontend &amp; Mobile</h4><div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">Tailwind</span><span class="chip">Flutter / Dart</span></div></div>
+          <div class="skill"><h4>DevOps</h4><div class="chips"><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">Windows Server / IIS</span><span class="chip">PowerShell</span><span class="chip">pytest · Playwright</span><span class="chip">Git</span></div></div>
+          <div class="skill"><h4>AI &amp; Engineering</h4><div class="chips"><span class="chip">OpenAI / Claude APIs</span><span class="chip">TensorFlow</span><span class="chip">YOLOv8</span><span class="chip">SolidWorks</span><span class="chip">MATLAB / Simulink</span><span class="chip">Embedded</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Let's work together</h2>
+        <p class="sub" style="margin-left:auto;margin-right:auto">I'm looking for backend, ERP developer and integration roles, remote or in the region, and I can start immediately.</p>
+        <div class="ctas">
+          <a class="btn primary" href="mailto:Ferekhoa@gmail.com">Ferekhoa@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/omar-ferekh-874138158/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/ferekhoa" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="Omar_Ferekh_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 OMAR FEREKH · Built with plain HTML &amp; CSS, hosted on GitHub Pages</footer>
+</body>
+</html>
